@@ -10,7 +10,6 @@ from time import sleep
 from utils import intro, build_markup
 
 bot = telebot.TeleBot(config.TOKEN)
-dic = enchant.Dict('en_US')
 
 
 
@@ -21,6 +20,8 @@ def start(message):
 
 @bot.message_handler(content_types = ['text'])
 def game(message):
+    if message.text == 'English':
+        dic = enchant.Dict('en_US')
     if message.text == 'Сбросить до буквы "A" с сохранением счета':
         intro(message, bot)
         return
